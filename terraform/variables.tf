@@ -1,7 +1,13 @@
 variable "application_name" {
   type        = string
   description = "The name of your application"
-  default     = "demo-4276-7762-6039-2574"
+  default     = "demo-0954-8864"
+}
+
+variable "terraform_storage_account" {
+  type        = string
+  description = "When using an Azure back-end, the name of the Azure Storage Account that stores the Terraform state"
+  default     = ""
 }
 
 variable "environment" {
@@ -13,5 +19,5 @@ variable "environment" {
 variable "location" {
   type        = string
   description = "The Azure region where all resources in this example should be created"
-  default     = "eastus"
+  default     = "westeurope"
 }
