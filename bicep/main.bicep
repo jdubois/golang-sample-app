@@ -2,7 +2,7 @@ targetScope = 'subscription'
 
 // If an environment is set up (dev, test, prod...), it is used in the application name
 param environment string = 'dev'
-param applicationName string = 'demo-3856-9057'
+param applicationName string = 'demo-4944-3166'
 param location string = 'westeurope'
 var instanceNumber = '001'
 
@@ -18,13 +18,9 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   tags: defaultTags
 }
 
-
-
-
 var applicationEnvironmentVariables = [
-// You can add your custom environment variables here      
+// You can add your custom environment variables here
 ]
-
 
 module webApp 'modules/app-service/app-service.bicep' = {
   name: 'webApp'
@@ -39,4 +35,4 @@ module webApp 'modules/app-service/app-service.bicep' = {
   }
 }
 
-
+output container_registry_name = webApp.outputs.container_registry_name

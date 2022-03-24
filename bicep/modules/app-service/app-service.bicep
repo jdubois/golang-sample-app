@@ -63,7 +63,6 @@ resource appServiceApp 'Microsoft.Web/sites@2020-12-01' = {
       linuxFxVersion: 'DOCKER|${containerRegistry.name}.azurecr.io/${applicationName}/${applicationName}:latest'
 
       ftpsState: 'FtpsOnly'
-      use32BitWorkerProcess: true
       http20Enabled: true
       minTlsVersion: '1.2'
       appSettings: union(environmentVariables, [
@@ -95,3 +94,4 @@ resource appServiceApp 'Microsoft.Web/sites@2020-12-01' = {
 // TODO AddonKeyVault - Access policy
 
 output application_hostname string = appServiceApp.properties.hostNames[0]
+output container_registry_name string = containerRegistry.name

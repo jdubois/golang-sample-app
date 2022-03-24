@@ -26,7 +26,7 @@ jobs:
         uses: microsoft/nubesgen-actions/gitops-apply-bicep@main
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          project_name: 'demo-3856-9057'
+          project_name: 'demo-4944-3166'
           deployment_region: 'westeurope'
       - name: Build and deploy a Docker image
         uses: microsoft/nubesgen-actions/gitops-build-and-deploy-to-app-service-docker@main
