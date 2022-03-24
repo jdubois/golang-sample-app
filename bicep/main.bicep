@@ -35,4 +35,4 @@ module webApp 'modules/app-service/app-service.bicep' = {
   }
 }
 
-output container_registry_name = webApp.outputs.container_registry_name
+output container_registry_name string = webApp.outputs.container_registry_name
