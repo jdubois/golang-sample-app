@@ -19,7 +19,6 @@ jobs:
       application_name: ${{ steps.infrastructure-deployment.outputs.application_name }}
       resource_group: ${{ steps.infrastructure-deployment.outputs.resource_group }}
       container_registry_name: ${{ steps.infrastructure-deployment.outputs.container_registry_name }}
-      container_registry_name: ${{ steps.infrastructure-deployment.outputs.container_registry_name }}
     steps:
       - name: Apply Terraform configuration
         id: infrastructure-deployment
