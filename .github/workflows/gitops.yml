@@ -26,27 +26,6 @@ jobs:
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           tf_storage_account: ${{ secrets.TF_STORAGE_ACCOUNT }}
-  build:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Build a Docker image
-        id: build
-        uses: jdubois/nubesgen-actions-1/gitops-build-container@main
-        with:
-          build_command: 'docker build . -t application/application:${{ github.sha }}'
-  deploy:
-    needs: [manage-infrastructure,build]
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Deploy a Docker image to Azure Container Apps
-        id: deploy
-        uses: jdubois/nubesgen-actions-1/gitops-deploy-to-container-apps@main
-        with:
-          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          application_name: ${{ needs.manage-infrastructure.outputs.application_name }}
-          resource_group: ${{ needs.manage-infrastructure.outputs.resource_group }}
-          container_registry_name: ${{ needs.manage-infrastructure.outputs.container_registry_name }}
-          image_name: ${{ needs.manage-infrastructure.outputs.container_registry_name }}.azurecr.io/${{ needs.manage-infrastructure.outputs.application_name }}/${{ needs.manage-infrastructure.outputs.application_name }}:${{ github.sha }}
   display-information:
     needs: [manage-infrastructure]
     runs-on: ubuntu-20.04
