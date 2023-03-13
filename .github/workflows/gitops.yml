@@ -29,9 +29,9 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - name: Build a Docker image using Java
+      - name: Build a Docker image
         id: build
-        uses: jdubois/nubesgen-actions-1/gitops-build-container-java@main
+        uses: jdubois/nubesgen-actions-1/gitops-build-container@main
         with:
           build_command: 'docker build . -t application/application:${{ github.sha }}'
   deploy:
