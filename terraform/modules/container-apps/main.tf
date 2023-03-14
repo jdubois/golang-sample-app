@@ -91,29 +91,12 @@ resource "azurerm_container_app" "application" {
     }
   }
 
-  secret {
-    name  = "database-password"
-    value = var.database_password
-  }
-
   template {
     container {
       name   = azurecaf_name.application.result
       image  = "ghcr.io/microsoft/nubesgen/nubesgen-native:main"
       cpu    = 0.25
       memory = "0.5Gi"
-      env {
-        name  = "DATABASE_URL"
-        value = var.database_url
-      }
-      env {
-        name  = "DATABASE_USERNAME"
-        value = var.database_username
-      }
-      env {
-        name        = "DATABASE_PASSWORD"
-        secret_name = "database-password"
-      }
     }
     min_replicas = 1
   }

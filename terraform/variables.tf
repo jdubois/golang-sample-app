@@ -1,7 +1,7 @@
 variable "application_name" {
   type        = string
   description = "The name of your application"
-  default     = "go-sample-4255"
+  default     = "golang-6813-1255"
 }
 
 variable "terraform_storage_account" {
