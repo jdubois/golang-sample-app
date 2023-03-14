@@ -48,4 +48,17 @@ module "application" {
   application_name = var.application_name
   environment      = local.environment
   location         = var.location
+
+  database_url      = module.database.database_url
+  database_username = module.database.database_username
+  database_password = module.database.database_password
+}
+
+module "database" {
+  source           = "./modules/postgresql"
+  resource_group   = azurerm_resource_group.main.name
+  application_name = var.application_name
+  environment      = local.environment
+  location         = var.location
+  high_availability= false
 }

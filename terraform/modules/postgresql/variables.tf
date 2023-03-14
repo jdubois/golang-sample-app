@@ -1,11 +1,13 @@
 variable "resource_group" {
   type        = string
   description = "The resource group"
+  default     = ""
 }
 
 variable "application_name" {
   type        = string
   description = "The name of your application"
+  default     = ""
 }
 
 variable "environment" {
@@ -17,19 +19,17 @@ variable "environment" {
 variable "location" {
   type        = string
   description = "The Azure region where all resources in this example should be created"
+  default     = ""
 }
 
-variable "database_url" {
+variable "administrator_login" {
   type        = string
-  description = "The URL to the database"
+  description = "The PostgreSQL administrator login"
+  default     = "postgresqladmin"
 }
 
-variable "database_username" {
-  type        = string
-  description = "The database username"
-}
-
-variable "database_password" {
-  type        = string
-  description = "The database password"
+variable "high_availability" {
+  type        = bool
+  description = "Enables PostgreSQL high availability"
+  default     = false
 }

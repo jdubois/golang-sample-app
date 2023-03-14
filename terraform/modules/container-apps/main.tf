@@ -91,13 +91,34 @@ resource "azurerm_container_app" "application" {
     }
   }
 
+  secret {
+    name  = "database-password"
+    value = var.database_password
+  }
+
   template {
     container {
       name   = azurecaf_name.application.result
       image  = "ghcr.io/microsoft/nubesgen/nubesgen-native:main"
       cpu    = 0.25
       memory = "0.5Gi"
+      env {
+        name  = "SPRING_PROFILES_ACTIVE"
+        value = "prod,azure"
+      }
+      env {
+        name  = "SPRING_DATASOURCE_URL"
+        value = "jdbc:postgresql://${var.database_url}"
+      }
+      env {
+        name  = "SPRING_DATASOURCE_USERNAME"
+        value = var.database_username
+      }
+      env {
+        name        = "SPRING_DATASOURCE_PASSWORD"
+        secret_name = "database-password"
+      }
     }
-    min_replicas = 0
+    min_replicas = 1
   }
 }
