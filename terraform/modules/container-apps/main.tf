@@ -103,19 +103,15 @@ resource "azurerm_container_app" "application" {
       cpu    = 0.25
       memory = "0.5Gi"
       env {
-        name  = "SPRING_PROFILES_ACTIVE"
-        value = "prod,azure"
+        name  = "DATABASE_URL"
+        value = var.database_url
       }
       env {
-        name  = "SPRING_DATASOURCE_URL"
-        value = "jdbc:postgresql://${var.database_url}"
-      }
-      env {
-        name  = "SPRING_DATASOURCE_USERNAME"
+        name  = "DATABASE_USERNAME"
         value = var.database_username
       }
       env {
-        name        = "SPRING_DATASOURCE_PASSWORD"
+        name        = "DATABASE_PASSWORD"
         secret_name = "database-password"
       }
     }
