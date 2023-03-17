@@ -37,6 +37,8 @@ jobs:
   deploy:
     needs: [manage-infrastructure,build]
     runs-on: ubuntu-20.04
+    outputs:
+      application_url: ${{ steps.deploy.outputs.application_url }}
     steps:
       - name: Deploy a Docker image to Azure Container Apps
         id: deploy
