@@ -40,7 +40,7 @@ jobs:
     steps:
       - name: Deploy a Docker image to Azure Container Apps
         id: deploy
-        uses: jdubois/nubesgen-actions-1/gitops-deploy-to-container-apps@patch-1
+        uses: jdubois/nubesgen-actions-1/gitops-deploy-to-container-apps@patch-2
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           application_name: ${{ needs.manage-infrastructure.outputs.application_name }}
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Display Azure infrastructure information
-        uses: jdubois/nubesgen-actions-1/gitops-display-information@patch-2
+        uses: microsoft/nubesgen-actions/gitops-display-information@v0.11.0
         with:
           application_name: ${{ needs.manage-infrastructure.outputs.application_name }}
           application_url: ${{ needs.deploy.outputs.application_url }}
